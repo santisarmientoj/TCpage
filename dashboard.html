@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Panel del Estudiante</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h2>Panel del Estudiante</h2>
+    <button class="login-btn" id="logout">Cerrar sesión</button>
+  </header>
+
+  <main>
+    <h1>Bienvenido 🎶</h1>
+    <p id="status">Cargando tu información...</p>
+
+    <div id="acciones"></div>
+  </main>
+
+  <script type="module">
+    import { auth, db } from "./firebase-config.js";
+    import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+    import { doc, getDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+
+    const logoutBtn = document.getElementById("logout");
+    const statusEl = document.getElementById("status");
+    const accionesEl = document.getElementById("acciones");
+
+    onAuthStateChanged(auth, async (user) => {
+      if (!user) {
+        window.location.href = "login.html";
+      } else {
+        const userRef = doc(db, "users", user.uid);
+        const snap = await getDoc(userRef);
+
+        if (!snap.exists() || snap.data().subscription !== "active") {
+          statusEl.textContent = "No tienes una suscripción activa.";
+          accionesEl.innerHTML = `
+            <button onclick="window.location.href='pago.html'">
+              Suscribirme ahora
+            </button>
+            <p>Mientras tanto, disfruta de estas clases gratuitas de muestra.</p>
+            <!-- aquí puedes meter videos o PDFs de ejemplo -->
+          `;
+        } else {
+          statusEl.textContent = "Tu suscripción está activa ✅";
+          accionesEl.innerHTML = `
+            <button onclick="window.location.href='privado.html'">
+              Ir a mi contenido exclusivo
+            </button>
+          `;
+        }
+      }
+    });
+
+    logoutBtn.addEventListener("click", async () => {
+      await signOut(auth);
+      window.location.href = "login.html";
+    });
+  </script>
+</body>
+</html>

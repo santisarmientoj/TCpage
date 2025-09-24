@@ -16,7 +16,7 @@ form.addEventListener("submit", async (e) => {
   try {
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
     console.log("Login exitoso:", userCredential.user);
-    window.location.href = "privado.html";
+    window.location.href = "dashboard.html";
   } catch (error) {
     console.error("Error en login:", error.code, error.message);
     alert("Error: " + error.message);

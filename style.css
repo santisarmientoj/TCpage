@@ -66,6 +66,21 @@ nav ul li a:hover {
   background-color: #edf3a0;
 }
 
+.account-btn {
+  background-color: #b4b4b4;
+  color: white;
+  border: none;
+  padding: 20px 30px;
+  border-radius: 15px;
+  cursor: pointer;
+  margin: 0 auto;
+  display: block;
+}
+
+.account-btn:hover {
+  background-color: #edf3a0;
+}
+
 /* Imagen principal */
 .hero-img {
   max-width: 100%;

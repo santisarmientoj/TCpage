@@ -1,0 +1,92 @@
+/* Reset básico */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0px;
+  padding: 0;
+  background: #050101;
+  background: linear-gradient(29deg, rgb(6, 11, 27) 50%, rgba(110, 255, 146, 1) 250%);
+  background-size: 1920px 1080px;
+  /*color: #707070;*/
+}
+
+/* Encabezado */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: #181717;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+/* Menú */
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 35px;
+  margin: 0px;
+  padding: 0;
+}
+
+nav ul li a {
+  text-decoration: none;
+  font-size: 17px;
+  color: #e7e7e7;
+  font-weight: bold;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+/* Botón de login */
+.login-btn {
+  background-color: #b4b4b4;
+  color: white;
+  border: none;
+  padding: 10px 30px;
+  border-radius: 15px;
+  cursor: pointer;
+}
+.login-btn:hover {
+  background-color: #555;
+}
+
+.subscribe-btn {
+  background-color: #b4b4b4;
+  color: white;
+  border: none;
+  padding: 10px 30px;
+  border-radius: 15px;
+  cursor: pointer;
+  margin-left: 1150px;
+}
+
+.subscribe-btn:hover {
+  background-color: #edf3a0;
+}
+
+/* Imagen principal */
+.hero-img {
+  max-width: 100%;
+  height: auto;
+  margin: 0px auto;
+  align-items: center;
+  display: none;
+}
+
+/* Contenido principal */
+main {
+  padding: 100px 5px;
+  text-align: center;
+  font-size: 25px;
+  text-shadow: 2px 2px 2px #161616;
+  color: #9aebc6;
+}
+
+
+/* Secciones */
+section {
+  margin: 30px 0;
+}
+

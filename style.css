@@ -56,10 +56,11 @@ nav ul li a:hover {
   background-color: #b4b4b4;
   color: white;
   border: none;
-  padding: 10px 30px;
-  border-radius: 15px;
+  padding: 20px 80px;
+  border-radius: 20px;
   cursor: pointer;
-  margin-left: 1150px;
+  /*display: block;*/
+  align-items: center;
 }
 
 .subscribe-btn:hover {

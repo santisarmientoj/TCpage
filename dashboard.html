@@ -2,62 +2,63 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Panel del Estudiante</title>
+  <title>Dashboard - Academia</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
-    <h2>Panel del Estudiante</h2>
+    <h2>Tu Panel</h2>
     <button class="login-btn" id="logout">Cerrar sesión</button>
   </header>
 
   <main>
-    <h1>Bienvenido 🎶</h1>
-    <p id="status">Cargando tu información...</p>
+    <h1>Bienvenido 🎉</h1>
+    <p>Aquí puedes acceder a los contenidos de la Academia.</p>
 
-    <div id="acciones"></div>
+    <!-- Contenido limitado -->
+    <section>
+      <h2>Contenido Gratuito</h2>
+      <ul>
+        <li><a href="#">Clase de prueba en video</a></li>
+        <li><a href="#">Artículo introductorio</a></li>
+      </ul>
+    </section>
+
+    <!-- Oferta de suscripción -->
+    <section>
+      <h2>Suscríbete para acceder al contenido completo</h2>
+      <p>Con la suscripción Premium podrás acceder a todas las clases, audios y PDFs.</p>
+      <button id="subscribe">Suscribirme</button>
+    </section>
   </main>
 
+  <!-- Firebase Auth -->
   <script type="module">
-    import { auth, db } from "./firebase-config.js";
+    import { auth } from "./firebase-config.js";
     import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
-    import { doc, getDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
 
     const logoutBtn = document.getElementById("logout");
-    const statusEl = document.getElementById("status");
-    const accionesEl = document.getElementById("acciones");
+    const subscribeBtn = document.getElementById("subscribe");
 
-    onAuthStateChanged(auth, async (user) => {
+    // Proteger acceso al dashboard
+    onAuthStateChanged(auth, (user) => {
       if (!user) {
         window.location.href = "login.html";
-      } else {
-        const userRef = doc(db, "users", user.uid);
-        const snap = await getDoc(userRef);
-
-        if (!snap.exists() || snap.data().subscription !== "active") {
-          statusEl.textContent = "No tienes una suscripción activa.";
-          accionesEl.innerHTML = `
-            <button onclick="window.location.href='pago.html'">
-              Suscribirme ahora
-            </button>
-            <p>Mientras tanto, disfruta de estas clases gratuitas de muestra.</p>
-            <!-- aquí puedes meter videos o PDFs de ejemplo -->
-          `;
-        } else {
-          statusEl.textContent = "Tu suscripción está activa ✅";
-          accionesEl.innerHTML = `
-            <button onclick="window.location.href='privado.html'">
-              Ir a mi contenido exclusivo
-            </button>
-          `;
-        }
       }
     });
 
+    // Logout
     logoutBtn.addEventListener("click", async () => {
       await signOut(auth);
       window.location.href = "login.html";
     });
+
+    // Redirigir a Stripe Checkout
+    subscribeBtn.addEventListener("click", () => {
+      // 👉 Aquí va tu enlace de Stripe (modo prueba o real)
+      window.location.href = "https://buy.stripe.com/test_9B63cu23s1mH0RyfWDfYY00";
+    });
   </script>
 </body>
 </html>
+

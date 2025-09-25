@@ -26,6 +26,7 @@ nav ul {
   gap: 35px;
   margin: 0px;
   padding: 0;
+  color: #e7e7e7;
 }
 
 nav ul li a {
@@ -56,17 +57,19 @@ nav ul li a:hover {
 .subscribe-btn {
   background-color: #b4b4b4;
   color: rgb(10, 49, 19);
-  border: none;
+  border: 2px solid #e1fff2;
   padding: 5px 60px;
   border-radius: 20px;
   margin-top: 35px;
+  margin-bottom: 10px;
   cursor: pointer;
+  box-shadow: inset 2px 2px 5px #ffffff;
   /*display: block;*/
   align-items: center;
 }
 
 .subscribe-btn:hover {
-  background-color: #edf3a0;  
+  background-color: #abc5ab;  
 }
 
 /* Botón de login a la cuenta */
@@ -121,7 +124,9 @@ section {
   border-color: #9aebc6;
 }
 
-input-field:focus {
-  border-color: #007BFF;
+.input-field:focus {
+  border-color: #a7ff19;
+  color: #74ff02;
+  border: 4px solid;
   outline: none;
 }

@@ -52,21 +52,24 @@ nav ul li a:hover {
   background-color: #555;
 }
 
+/* Botón de crear cuenta */
 .subscribe-btn {
   background-color: #b4b4b4;
-  color: white;
+  color: rgb(10, 49, 19);
   border: none;
-  padding: 20px 80px;
+  padding: 5px 60px;
   border-radius: 20px;
+  margin-top: 35px;
   cursor: pointer;
   /*display: block;*/
   align-items: center;
 }
 
 .subscribe-btn:hover {
-  background-color: #edf3a0;
+  background-color: #edf3a0;  
 }
 
+/* Botón de login a la cuenta */
 .account-btn {
   background-color: #b4b4b4;
   color: white;
@@ -100,9 +103,25 @@ main {
   color: #9aebc6;
 }
 
-
 /* Secciones */
 section {
   margin: 30px 0;
 }
 
+/* Formularios */
+.input-field {
+  display: block;
+  width: 20%;
+  padding: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 15px;
+  border: 3px solid #ccc;
+  border-radius: 5px;
+  border-color: #9aebc6;
+}
+
+input-field:focus {
+  border-color: #007BFF;
+  outline: none;
+}

@@ -69,7 +69,7 @@ nav ul li a:hover {
 }
 
 .subscribe-btn:hover {
-  background-color: #abc5ab;  
+  background-color: #53ffbd;  
 }
 
 /* Botón de login a la cuenta */
@@ -85,7 +85,7 @@ nav ul li a:hover {
 }
 
 .account-btn:hover {
-  background-color: #edf3a0;
+  background-color: #aef3a0;
 }
 
 /* Imagen principal */
@@ -122,11 +122,13 @@ section {
   border: 3px solid #ccc;
   border-radius: 5px;
   border-color: #9aebc6;
+  background-color: #a8a8a8;
+  color: #e7e7e7;
 }
 
 .input-field:focus {
-  border-color: #a7ff19;
-  color: #74ff02;
-  border: 4px solid;
+  background: #333333;
+  border: 3px solid;
+  border-color: #03e27e;
   outline: none;
 }

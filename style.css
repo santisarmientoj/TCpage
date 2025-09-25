@@ -19,6 +19,12 @@ header {
   border-bottom: 1px solid #e7e7e7;
 }
 
+main {
+  padding: 20px;
+  margin: 60px;
+  text-align: center;
+}
+
 /* Menú */
 nav ul {
   list-style: none;
@@ -133,6 +139,11 @@ section {
   border: 3px solid;
   border-color: #03e27e;
   outline: none;
+}
+
+section h2 {
+  font-size: 38px;
+  margin-bottom: 10px;
 }
 
 /*div {

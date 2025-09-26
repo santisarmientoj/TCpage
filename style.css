@@ -48,10 +48,10 @@ nav ul li a:hover {
 
 /* Botón de login */
 .login-btn {
-  background-color: #b4b4b4;
+  background-color: transparent;
   color: white;
-  border: none;
-  padding: 10px 30px;
+  border: 1px solid white;
+  padding: 0px 30px;
   border-radius: 10px;
   cursor: pointer;
 }

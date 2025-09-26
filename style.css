@@ -25,6 +25,12 @@ main {
   text-align: center;
 }
 
+main h2 {
+  font-size: 20px;
+  color: #051d12;
+  margin-bottom: 20px;
+}
+
 main h6 {
   font-size: 50px;
   color: #9aebc6;
@@ -99,20 +105,23 @@ nav ul li a:hover {
   }
 }
 
-/* Botón de login a la cuenta */
-.account-btn {
-  background-color: #b4b4b4;
-  color: white;
-  border: none;
-  padding: 20px 30px;
-  border-radius: 15px;
+.generic-btn {
+  background-color: #40ffbf;
+  color: rgb(25, 185, 137);
+  border: 2px solid #00ff37;
+  padding: 0px 40px;
+  border-radius: 20px;
+  margin-top: 35px;
+  margin-bottom: 10px;
   cursor: pointer;
-  margin: 0 auto;
-  display: block;
+  box-shadow: inset 3px 3px 20px #ffffff;
+  box-shadow: 0 0 20px #31ffa2;
+  /*display: block;*/
+  align-items: center;
 }
 
-.account-btn:hover {
-  background-color: #aef3a0;
+.generic-btn:hover {
+  background-color: #00ff9d; 
 }
 
 /* Imagen principal */

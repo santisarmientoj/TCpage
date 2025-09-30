@@ -3,69 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <title>Dashboard - Academia</title>
+  <script type="module" src="./dashboard.js"></script>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
-    <nav>
-      <ul>
-        <li><h3>Tu Panel</h3></li>
-      </ul>
-    </nav>
-    <button class="login-btn" id="logout"><p>Cerrar sesión</p></button>
+    <h2>Tu Panel de Cursos</h2>
+    <button id="logout">Cerrar sesión</button>
   </header>
 
   <main>
-    <h6>Bienvenido 🎉</h6>
-    <p>Aquí puedes acceder a los contenidos de la Academia.</p>
+    <h1>Bienvenido 🎶</h1>
+    <p>Aquí encontrarás los cursos disponibles. Compra los que quieras y accede cuando quieras.</p>
 
-    <!-- Contenido limitado -->
-    <section>
-      <div class="free-content-div">
-        <h3>Contenido Gratuito</h3>
-        <ul>
-          <p><a href="https://youtu.be/Q7X46w9dHtA">Clase de prueba en video</a></p>
-          <p><a href="https://www.laguitarra-blog.com/wp-content/uploads/2011/12/Curso-Completo-Teoria-Musical1.pdf">Artículo introductorio</a></p>
-        </ul>
-      </div>
-    </section>
-
-    <!-- Oferta de suscripción -->
-    <section>
-      <h3>Suscríbete para acceder al contenido completo</h3>
-      <p>Con la suscripción Premium podrás acceder a todas las clases, audios y PDFs.</p>
-      <button class="subscribe-btn" id="subscribe"><h1>Suscribirme</h1></button>
+    <section id="cursos">
+      <!-- Los cursos se cargarán dinámicamente -->
     </section>
   </main>
-
-  <!-- Firebase Auth -->
-  <script type="module">
-    import { auth } from "./firebase-config.js";
-    import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
-
-    const logoutBtn = document.getElementById("logout");
-    const subscribeBtn = document.getElementById("subscribe");
-
-    // Proteger acceso al dashboard
-    onAuthStateChanged(auth, (user) => {
-      if (!user) {
-        window.location.href = "login.html";
-      }
-    });
-
-    // Logout
-    logoutBtn.addEventListener("click", async () => {
-      await signOut(auth);
-      window.location.href = "login.html";
-    });
-
-    // Redirigir a Stripe Checkout
-    subscribeBtn.addEventListener("click", () => {
-      // 👉 Aquí va tu enlace de Stripe (modo prueba o real)
-      window.location.href = "https://buy.stripe.com/test_9B63cu23s1mH0RyfWDfYY00";
-    });
-  </script>
-
 </body>
 </html>
+
+
+
 

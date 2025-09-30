@@ -1,29 +1,40 @@
-import { auth } from "./firebase-config.js";
-import { createUserWithEmailAndPassword, updateProfile } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+// register.js
+import { auth, db } from "./firebase-config.js";
+import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+import { doc, setDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
 
-const form = document.getElementById("registerForm");
-
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
-
-  const name = document.getElementById("name").value;
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("registerForm");
   const errorMsg = document.getElementById("error-msg");
 
-  try {
-    // Crear usuario en Firebase Auth
-    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-    // Guardar nombre en el perfil del usuario
-    await updateProfile(userCredential.user, { displayName: name });
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
 
-    console.log("Usuario registrado:", userCredential.user);
+    try {
+      // 1. Crear usuario en Firebase Auth
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
 
-    // Redirigir al dashboard
-    window.location.href = "dashboard.html";
-  } catch (error) {
-    console.error("Error en registro:", error.code, error.message);
-    errorMsg.textContent = "Error: " + error.message;
-  }
+      // 2. Crear documento en Firestore con el UID
+      await setDoc(doc(db, "users", user.uid), {
+        name: name,
+        email: user.email,
+        createdAt: new Date(),
+        role: "student",
+        coursesPurchased: [] // dejamos el array vacío al inicio
+      });
+
+      alert("Registro exitoso 🎉");
+      window.location.href = "login.html"; // Redirige al login
+    } catch (error) {
+      console.error("Error en el registro:", error);
+      errorMsg.textContent = error.message;
+    }
+  });
 });
+
+

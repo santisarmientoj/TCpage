@@ -21,8 +21,19 @@
   <main>
       <h1>Crear una cuenta</h1>
         <form id="registerForm">
-          <input class="input-field" type="text" id="name" placeholder="Nombre completo" required>
+          <input class="input-field" type="text" id="name" placeholder="Nombre y apellido" required>
           <input class="input-field" type="email" id="email" placeholder="Correo" required>
+              <div style="display: flex; gap: 5px;">
+                <select class="dropdown" id="countryCode" required>
+                  <option value="+57">🇨🇴 +57</option>
+                  <option value="+34">🇪🇸 +34</option>
+                  <option value="+1">🇺🇸 +1</option>
+                  <option value="+52">🇲🇽 +52</option>
+                  <option value="+49">🇩🇪 +49</option>
+                  <!-- puedes agregar más según tus necesidades -->
+                </select>
+                <input class="number-input" type="tel" id="phoneNumber" placeholder="Número de teléfono" required>
+              </div>
           <input class="input-field" type="password" id="password" placeholder="Contraseña" required> 
           <button class="generic-btn" type="submit"><h2>Registrarme</h2></button>
         </form>  

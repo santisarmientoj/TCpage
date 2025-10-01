@@ -13,6 +13,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const name = document.getElementById("name").value.trim();
     const email = document.getElementById("email").value.trim();
     const password = document.getElementById("password").value;
+    const countryCode = document.getElementById("countryCode").value;
+    const phoneNumber = document.getElementById("phoneNumber").value;
+    const fullPhone = `${countryCode} ${phoneNumber}`;
 
     try {
       // 1. Crear usuario en Firebase Auth
@@ -23,9 +26,10 @@ document.addEventListener("DOMContentLoaded", () => {
       await setDoc(doc(db, "users", user.uid), {
         name: name,
         email: user.email,
+        phone: fullPhone, // 👈 aquí se guarda el número completo
         createdAt: new Date(),
         role: "student",
-        coursesPurchased: [] // dejamos el array vacío al inicio
+        coursesPurchased: []
       });
 
       alert("Registro exitoso 🎉");

@@ -19,7 +19,7 @@ const cursosSection = document.getElementById("cursos");
 // Lista de cursos disponibles en la plataforma
 const cursosDisponibles = [
   { id: "armonia", titulo: "Curso de Armonía", url: "curso-armonia.html" },
-  { id: "tecnica", titulo: "Curso de Técnica", url: "curso-tecnica.html" },
+  { id: "tecnica", titulo: "Curso de Técnica Vocal", url: "curso-tecnica.html" },
   { id: "ritmo", titulo: "Curso de Ritmo", url: "curso-ritmo.html" }
 ];
 
@@ -29,7 +29,7 @@ onAuthStateChanged(auth, async (user) => {
     window.location.href = "login.html";
   } else {
     console.log("Usuario logueado:", user.uid);
-    
+
     // Cargar cursos desde Firestore
     await cargarCursos(user.uid);
   }
@@ -70,9 +70,13 @@ function mostrarCursos(coursesPurchased) {
 
     if (coursesPurchased.includes(curso.id)) {
       btn.textContent = "Entrar";
+      btn.classList.add("txt-btn-entrar");
+      btn.classList.add("btn-entrar");
       btn.onclick = () => window.location.href = curso.url;
     } else {
       btn.textContent = "Comprar";
+      btn.classList.add("txt-btn-comprar");
+      btn.classList.add("btn-comprar");
       btn.onclick = async () => {
         const user = auth.currentUser;
         if (!user) return alert("Debes iniciar sesión para comprar un curso.");
